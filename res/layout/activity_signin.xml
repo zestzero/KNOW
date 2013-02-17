@@ -9,12 +9,37 @@
         android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true">
-
         <TextView
+            android:id="@+id/user_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User name" />
-
+            android:layout_centerVertical="true"
+            android:text="ชื่อผู้ใช้"
+            android:textStyle="bold" />
+		<EditText
+		    android:id="@+id/user_edit"
+		    android:layout_width="150dp"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/user_txt"
+		    android:layout_marginTop="5dp"
+		    android:background="#FFFFFF"
+		    android:textSize="12dp" />
+		<TextView
+            android:id="@+id/pwd_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/user_edit"
+            android:layout_marginTop="15dp"
+            android:text="รหัสผ่าน"
+            android:textStyle="bold" />
+		<EditText
+		    android:id="@+id/pwd_edit"
+		    android:layout_width="150dp"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/pwd_txt"
+		    android:layout_marginTop="5dp"
+		    android:background="#FFFFFF"
+		    android:textSize="12dp" />
     </RelativeLayout>
-
 </RelativeLayout>
