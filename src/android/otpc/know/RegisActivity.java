@@ -53,6 +53,18 @@ public class RegisActivity extends Activity {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_regis);
 	        iniView();  
+	        iniController();
+	 }
+	 private void iniView(){
+		 	username= (EditText)findViewById(R.id.user_edit);
+			pwd		= (EditText)findViewById(R.id.pwd_edit);
+			pwd_con	= (EditText)findViewById(R.id.confirm_pwd_edit);
+			email	= (EditText)findViewById(R.id.email_edit);
+			confirmBtn = (Button)findViewById(R.id.confirm_btn);
+			cancelBtn = (Button)findViewById(R.id.cancel_btn);
+			user = new USER();
+	 }
+	 private void iniController(){
 	        confirmBtn.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -71,15 +83,14 @@ public class RegisActivity extends Activity {
 				                Toast.LENGTH_LONG).show();
 				}
 			});
-	 }
-	 private void iniView(){
-		 	username= (EditText)findViewById(R.id.user_edit);
-			pwd		= (EditText)findViewById(R.id.pwd_edit);
-			pwd_con	= (EditText)findViewById(R.id.confirm_pwd_edit);
-			email	= (EditText)findViewById(R.id.email_edit);
-			confirmBtn = (Button)findViewById(R.id.confirm_btn);
-			cancelBtn = (Button)findViewById(R.id.cancel_btn);
-			user = new USER();
+	        cancelBtn.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					finish();
+				}
+			});
 	 }
 	 public static String convertStreamToString(java.io.InputStream is) {
 		    java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
