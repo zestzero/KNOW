@@ -139,7 +139,7 @@ public class RegisActivity extends Activity {
 		return plaintext;
 	 }
 	 class RegisterTask extends AsyncTask<String, Void, USER> {
-
+		 String result =null;
 		@Override
 		protected USER doInBackground(String... arg0) {
 			// TODO Auto-generated method stub
@@ -167,7 +167,7 @@ public class RegisActivity extends Activity {
 		        // If the response does not enclose an entity, there is no need
 		        if (entity != null) {
 		            InputStream instream = entity.getContent();
-		            String result = convertStreamToString(instream);
+		            result = convertStreamToString(instream);
 		            Log.i("Read from server", result);
 		        }
 		    } catch (Throwable t) {
@@ -178,6 +178,16 @@ public class RegisActivity extends Activity {
 		 protected void onPostExecute(USER user) {
 		        // TODO: check this.exception 
 		        // TODO: do something with the feed
+			 if(result.equalsIgnoreCase("true")){
+				 Toast.makeText(getApplicationContext(), "Sign up successfully!",
+			                Toast.LENGTH_SHORT).show();
+				 finish();
+			 }
+			 else
+			 {
+				 Toast.makeText(getApplicationContext(), "Error occur: "+result,
+			                Toast.LENGTH_SHORT).show();
+			 }
 		    }
 	 }
 	 class USER {
