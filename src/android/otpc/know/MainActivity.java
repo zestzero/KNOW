@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
 			    return s.hasNext() ? s.next() : "";
 			}
 	 	class LoginTask extends AsyncTask<String, Void, Void> {
-	 		private String user,pwd,result,time;
+	 		String user,pwd,result,time;
 			@Override
 			protected Void doInBackground(String... input) {
 				// TODO Auto-generated method stub
