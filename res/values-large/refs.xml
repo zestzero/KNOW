@@ -1,0 +1,3 @@
+<resources>
+    <item type="layout" name="activity_unit_list">@layout/activity_unit_twopane</item>
+</resources>
