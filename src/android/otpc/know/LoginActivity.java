@@ -66,44 +66,13 @@ public class LoginActivity extends Activity {
 		return s.hasNext() ? s.next() : "";
 	}
 
-	class LoginTask extends AsyncTask<String, Void, Void> {
-		private String user, pwd, result, time;
+	class LoginTask extends AsyncTask<String, Void, JSONObject> {
+		private String user, pwd;
 
 		@SuppressLint("SimpleDateFormat") @Override
-		protected Void doInBackground(String... input) {
+		protected JSONObject doInBackground(String... input) {
 			user = input[0];
 			pwd = input[1];
-			
-//			Date dNow = new Date();
-//			SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//			time = ft.format(dNow).toString();
-//			int TIMEOUT_MILLISEC = 3600;
-//			try {
-//				JSONObject json = new JSONObject();
-//				json.put("UserName", user);
-//				json.put("Password", pwd);
-//				json.put("LastLogIn", time);
-//				
-//				HttpParams httpParams = new BasicHttpParams();
-//				HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT_MILLISEC);
-//				HttpConnectionParams.setSoTimeout(httpParams, TIMEOUT_MILLISEC);
-//				HttpClient client = new DefaultHttpClient(httpParams);
-//				String url = "http://knowideas.atwebpages.com/login.php";
-//				HttpPost request = new HttpPost(url);
-//				request.setEntity(new ByteArrayEntity(json.toString().getBytes("UTF8")));
-//				request.setHeader("json", json.toString());
-//				
-//				HttpResponse response = client.execute(request);
-//				HttpEntity entity = response.getEntity();
-//				// If the response does not enclose an entity, there is no need
-//				if (entity != null) {
-//					InputStream instream = entity.getContent();
-//					result = convertStreamToString(instream);
-//					Log.i("Read from server", result);
-//				}
-//			} catch (Throwable t) {
-//				Log.i("Request failed: ", t.toString());
-//			}
 			
 			JSONObject requestJson = new JSONObject();
 			try {
@@ -112,19 +81,29 @@ public class LoginActivity extends Activity {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			
 			JSONObject responseJson = WebServiceClient.getResponse("login2.php", requestJson);
-			return null;
+			
+			return responseJson;
 		}
 
-		protected void onPostExecute() {
-			if (result.equalsIgnoreCase("true")) {
-				Toast.makeText(getApplicationContext(), "Sign in successfully!", Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(context, UnitListActivity.class);
-				// intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				context.startActivity(intent);
-			} else {
-				Toast.makeText(getApplicationContext(), "Username/Password incorrect", Toast.LENGTH_SHORT).show();
+		protected void onPostExecute(JSONObject result) {
+			if(result == null){
+				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			try {
+				if (result.getString("result").equalsIgnoreCase("true")) {
+					Toast.makeText(getApplicationContext(), "Sign in successfully!", Toast.LENGTH_LONG).show();
+//					Intent intent = new Intent(context, UnitListActivity.class);
+//					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//					context.startActivity(intent);
+				} else {
+					Toast.makeText(getApplicationContext(), "Username/Password incorrect", Toast.LENGTH_LONG).show();
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_LONG).show();
 			}
 		}
 
