@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_menubar"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="45dp"
+    android:background="@drawable/bg_menu" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username" />
+
+        <TextView
+            android:id="@+id/tv_function"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ฟั่งชั่น" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:paddingLeft="20dp" >
+
+            <TextView
+                android:id="@+id/tv_create_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="สร้างชุดคำถาม" />
+
+            <TextView
+                android:id="@+id/tv_edit_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="แก้ไขชุดคำถาม" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ประวัติการใช้" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:paddingLeft="20dp" >
+
+            <TextView
+                android:id="@+id/tv_view_my_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ดูชุดข้อสอบที่บันทึก" />
+
+            <TextView
+                android:id="@+id/tv_view_taken_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ดูชุดข้อสอบที่ทำแล้ว" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="การตั้งค่า" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:paddingLeft="20dp" >
+
+            <TextView
+                android:id="@+id/tv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="บัญชีผู้ใช้" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

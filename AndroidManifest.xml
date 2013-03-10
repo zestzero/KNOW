@@ -22,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisActivity" android:screenOrientation="landscape"></activity>
+        <activity android:name=".RegisActivity" android:screenOrientation="landscape" android:launchMode="singleTop"></activity>
+        <activity android:name=".CreateQuizStep1Activity" android:screenOrientation="landscape" android:launchMode="singleTop"></activity>
+        <activity android:screenOrientation="landscape" android:launchMode="singleTop" android:name=".NewsFeedActivity"></activity>
     </application>
 
 </manifest>

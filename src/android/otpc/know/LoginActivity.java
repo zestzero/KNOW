@@ -3,8 +3,8 @@ package android.otpc.know;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -17,10 +17,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
-	Button regis_btn, login_btn;
-	EditText username;
-	EditText password;
-	Context context;
+	private Button regis_btn, login_btn;
+	private EditText username, password;
+	private Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,22 +53,25 @@ public class LoginActivity extends Activity {
 			public void onClick(View v) {
 				String user = username.getText().toString().trim();
 				String pwd = password.getText().toString().trim();
-				if (user != "" && pwd != "") {
+				if (user != null && pwd != null && user.length() > 0 && pwd.length() > 0) {
 					new LoginTask().execute(new String[] { user, pwd });
+				} else {
+					Toast.makeText(context, "กรุณาใส่ username/password ให้ครบถ้วน", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
 	}
 
-	public static String convertStreamToString(java.io.InputStream is) {
-		java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-		return s.hasNext() ? s.next() : "";
-	}
-
 	class LoginTask extends AsyncTask<String, Void, JSONObject> {
 		private String user, pwd;
+		private ProgressDialog progressDialog;
+		
+		@Override
+		protected void onPreExecute() {
+			progressDialog = ProgressDialog.show(LoginActivity.this, null, "signing in", true, false);
+		}
 
-		@SuppressLint("SimpleDateFormat") @Override
+		@Override
 		protected JSONObject doInBackground(String... input) {
 			user = input[0];
 			pwd = input[1];
@@ -85,7 +87,8 @@ public class LoginActivity extends Activity {
 			
 			return responseJson;
 		}
-
+		
+		@Override
 		protected void onPostExecute(JSONObject result) {
 			if(result == null){
 				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_LONG).show();
@@ -95,9 +98,12 @@ public class LoginActivity extends Activity {
 			try {
 				if (result.getString("result").equalsIgnoreCase("true")) {
 					Toast.makeText(getApplicationContext(), "Sign in successfully!", Toast.LENGTH_LONG).show();
-//					Intent intent = new Intent(context, UnitListActivity.class);
-//					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//					context.startActivity(intent);
+					
+					Intent intent = new Intent(context, NewsFeedActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent.putExtra("username", username.getText().toString());
+					intent.putExtra("userid", result.getString("userId"));
+					context.startActivity(intent);
 				} else {
 					Toast.makeText(getApplicationContext(), "Username/Password incorrect", Toast.LENGTH_LONG).show();
 				}
@@ -105,6 +111,8 @@ public class LoginActivity extends Activity {
 				e.printStackTrace();
 				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_LONG).show();
 			}
+			
+			progressDialog.dismiss();
 		}
 
 	}
