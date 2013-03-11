@@ -4,7 +4,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical" >
-
+	
+    <include
+        android:id="@+id/topbar"
+        layout="@layout/topbar" />
+    
+    <!--
     <RelativeLayout
         android:id="@+id/topbar"
         android:layout_width="fill_parent"
@@ -25,6 +30,7 @@
                 android:inputType="text" />
         </RelativeLayout>
     </RelativeLayout>
+    -->
 
     <!--
     <RelativeLayout
