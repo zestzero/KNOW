@@ -85,7 +85,7 @@ public class RegisActivity extends Activity {
 					Toast.makeText(getApplicationContext(), "Password does not match"
 									+ pwd.getText().toString().trim() + "AND"
 									+ pwd_con.getText().toString().trim(),
-							Toast.LENGTH_LONG).show();
+							Toast.LENGTH_SHORT).show();
 			}
 		});
 		

@@ -24,16 +24,15 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="สร้างชุดคำถาม\n\tขั้นตอนที่ 1 : หัวข้อชุดข้อสอบ"
+            android:text="สร้างชุดคำถาม\n\tขั้นตอนที่ 3 : สร้างคำถาม"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/black" />
 
         <TableLayout
-            android:id="@+id/tableLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:paddingLeft="20dp" >
 
             <TableRow
@@ -45,16 +44,15 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ชื่อชุดข้อสอบ"
+                    android:layout_marginRight="10dp"
+                    android:text="ประเภทคำถาม"
                     android:textSize="20dp" />
 
-                <EditText
-                    android:id="@+id/et_quiz_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:singleLine="true" >
-                </EditText>
+                <Spinner
+                    android:id="@+id/sp_question_order_1"
+                    android:layout_width="550dp"
+                    android:layout_height="wrap_content" />
+
             </TableRow>
 
             <TableRow
@@ -66,55 +64,66 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ลักษณะชุดข้อสอบ"
+                    android:text="คำถาม"
                     android:textSize="20dp" />
 
-                <Spinner
-                    android:id="@+id/sp_quiz_status"
-                    android:layout_width="420dp"
-                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/et_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="2" >
+
+                    <requestFocus />
+                </EditText>
+
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible" >
+                android:layout_height="wrap_content" >
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="รหัสผ่านสำหรับชุดข้อสอบส่วนตัว"
+                    android:text="คีย์เวิร์ด"
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/et_quiz_pass"
+                    android:id="@+id/et_keyword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPassword" />
+                    android:ems="10" />
+
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" >
+                android:layout_height="wrap_content" >
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="ลักษณะการเลือกคำถาม"
+                    android:text="ตัวเลือก"
                     android:textSize="20dp" />
 
-                <Spinner
-                    android:id="@+id/sp_sort_answer"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/et_num_question_order_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10" />
+
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox" />
+
             </TableRow>
 
             <TableRow
@@ -126,49 +135,28 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="เวลาในการทำข้อสอบ"
+                    android:text="ตัวเลือก"
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/et_quiz_time"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:hint="นาที"
-                    android:inputType="number" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/editText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:visibility="invisible" />
+                    android:ems="10" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginTop="5dp"
-                    android:text="ใส่ 0 นาที หมายถึงไม่จำกัดเวลาในการทำข้อสอบ" />
             </TableRow>
         </TableLayout>
 
         <Button
-            android:id="@+id/bt_next"
-            android:layout_width="80dp"
+            android:id="@+id/bt_new_question"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="50dp"
-            android:text="ถัดไป"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="50dp"
+            android:text="เพิ่มคำถาม"
             android:textSize="15dp" />
+
     </RelativeLayout>
 
 </RelativeLayout>

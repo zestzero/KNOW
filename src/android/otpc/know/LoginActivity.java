@@ -28,6 +28,12 @@ public class LoginActivity extends Activity {
 		
 		initView();
 		initController();
+		
+		//bypass
+		Intent intent = new Intent(context, NewsFeedActivity.class);
+		intent.putExtra("username", "admin");
+		intent.putExtra("userid", "1");
+		startActivity(intent);
 	}
 
 	private void initView() {
@@ -43,8 +49,7 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(context, RegisActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				context.startActivity(intent);
+				startActivity(intent);
 			}
 		});
 		
@@ -56,7 +61,7 @@ public class LoginActivity extends Activity {
 				if (user != null && pwd != null && user.length() > 0 && pwd.length() > 0) {
 					new LoginTask().execute(new String[] { user, pwd });
 				} else {
-					Toast.makeText(context, "กรุณาใส่ username/password ให้ครบถ้วน", Toast.LENGTH_LONG).show();
+					Toast.makeText(context, "กรุณาใส่ username/password ให้ครบถ้วน", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -91,25 +96,28 @@ public class LoginActivity extends Activity {
 		@Override
 		protected void onPostExecute(JSONObject result) {
 			if(result == null){
-				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			
 			try {
 				if (result.getString("result").equalsIgnoreCase("true")) {
-					Toast.makeText(getApplicationContext(), "Sign in successfully!", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Sign in successfully!", Toast.LENGTH_SHORT).show();
 					
 					Intent intent = new Intent(context, NewsFeedActivity.class);
 					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent.putExtra("username", username.getText().toString());
 					intent.putExtra("userid", result.getString("userId"));
-					context.startActivity(intent);
+					startActivity(intent);
+					
+					username.setText("");
+					password.setText("");
 				} else {
-					Toast.makeText(getApplicationContext(), "Username/Password incorrect", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Username/Password incorrect", Toast.LENGTH_SHORT).show();
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
-				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "Webservice error", Toast.LENGTH_SHORT).show();
 			}
 			
 			progressDialog.dismiss();
