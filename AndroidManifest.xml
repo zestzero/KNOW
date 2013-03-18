@@ -15,16 +15,18 @@
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_unit_list" android:screenOrientation="landscape" android:launchMode="singleTop">
+            android:label="@string/title_unit_list" android:screenOrientation="landscape" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisActivity" android:screenOrientation="landscape" android:launchMode="singleTop"></activity>
-        <activity android:name=".CreateQuizStep1Activity" android:screenOrientation="landscape" android:launchMode="singleTop"></activity>
-        <activity android:screenOrientation="landscape" android:launchMode="singleTop" android:name=".NewsFeedActivity"></activity>
+        <activity android:name=".RegisActivity" android:screenOrientation="landscape" android:launchMode="singleTask"></activity>
+        <activity android:screenOrientation="landscape" android:launchMode="singleTask" android:name=".NewsFeedActivity"></activity><activity android:name=".CreateQuizStep1Activity" android:screenOrientation="landscape" android:launchMode="singleTask"></activity>
+        
+        <activity android:name=".CreateQuizStep2Activity" android:launchMode="singleTask" android:screenOrientation="landscape"></activity>
+        <activity android:name=".CreateQuizStep3Activity" android:launchMode="singleTask" android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

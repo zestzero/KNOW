@@ -2,6 +2,7 @@ package android.otpc.know;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class NewsFeedActivity extends KnowActivity {
@@ -15,12 +16,10 @@ public class NewsFeedActivity extends KnowActivity {
 		initController();
 	}
 
-	@Override
 	public void initView() {
-		super.initView();
+		super.initView(NewsFeedActivity.this);
 	}
 
-	@Override
 	public void initController() {
 		super.initController();
 	}
@@ -32,12 +31,13 @@ public class NewsFeedActivity extends KnowActivity {
 		.setMessage("ต้องการออกจากระบบ?")
 		.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				finish();
+				clearAfterLogout();
+				Intent intent = new Intent(NewsFeedActivity.this, LoginActivity.class);
+				startActivity(intent);
 			}
 		})
 		.setNegativeButton("ไม่", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
+			public void onClick(DialogInterface dialog, int which) { }
 		})
 		.setCancelable(false)
 		.show();

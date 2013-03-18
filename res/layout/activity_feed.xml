@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 	<RelativeLayout
 	    android:id="@+id/topbar"
-	    android:layout_width="fill_parent"
+	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:background="@drawable/top_bar" >
 	     <RelativeLayout 
@@ -26,15 +26,15 @@
 	<RelativeLayout
 	    android:id="@+id/menubar"
 	    android:layout_width="wrap_content"
-	    android:layout_height="fill_parent"
+	    android:layout_height="match_parent"
 	    android:background="@drawable/bg_menu"
 	    android:visibility="invisible"
 	    android:layout_marginTop="45dp">
 	</RelativeLayout>
 	<RelativeLayout
 	    android:id="@+id/content"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
 	    android:layout_marginTop="45dp"
 	    android:layout_toRightOf="@id/menubar">
 	</RelativeLayout>

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_menubar"
     android:layout_width="wrap_content"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     android:layout_marginTop="45dp"
     android:background="@drawable/bg_menu" >
 
@@ -16,6 +16,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Username" />
+
+        <TextView
+            android:id="@+id/tv_newsfeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="News Feed" />
 
         <TextView
             android:id="@+id/tv_function"
@@ -42,7 +49,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="แก้ไขชุดคำถาม" />
-
         </LinearLayout>
 
         <TextView
@@ -70,7 +76,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ดูชุดข้อสอบที่ทำแล้ว" />
-
         </LinearLayout>
 
         <TextView
@@ -92,9 +97,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="บัญชีผู้ใช้" />
-
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ออกจากระบบ" />
     </LinearLayout>
 
 </RelativeLayout>
